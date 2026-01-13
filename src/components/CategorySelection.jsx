@@ -1,8 +1,7 @@
-import { Key, Utensils } from "lucide-react";
-
+import { Utensils } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const CategorySelection = ({filterByCategory}) => {
+const CategorySelection = ({ filterByCategory }) => {
   const featuredCategories = [
     "Chicken",
     "Dessert",
@@ -14,28 +13,79 @@ const CategorySelection = ({filterByCategory}) => {
     "Pork",
     "Lamb",
   ];
-  return (
-    <>
-      <section className="mt-20">
-        <h2 className="text-3xl font-extrabold text-gray-100 mb-9 tracking-tight border-1-4 border-yellow-400 pl-4 flex items-center">
-          <Utensils className="w-6 h-6 mr-3 text-blue-500" />
-          Quick Filter by Primary Ingredient
-        </h2>
 
-        <div className="gird grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-7 sm:gap-6">
-          {featuredCategories.map((cat, index) => (
-            <Link
-              to={`search/${cat}`}
-              key={index}
-              onClick={()=>filterByCategory(cat)}
-              className="bg-blue-800 p-5 sm:p-5 rounded-xl shadow-xl shadow-black/50 transition duration-300 text-center font-semibold text-gray-100 border border-gray-700 hover:border-blue-500 hover:text-blue-400 transform hover:scale-[1.05] hover:bg-gray-700/50 mx-11 mt-7"
-            >
-              {cat}
-            </Link>
-          ))}
-        </div>
-      </section>
-    </>
+  return (
+    <section className="mt-12 sm:mt-16 md:mt-20 px-4">
+      {/* Heading */}
+      <h2
+        className="
+          flex items-center
+          text-lg
+          sm:text-xl
+          md:text-2xl
+          lg:text-3xl
+          font-extrabold
+          text-gray-100
+          mb-6
+          sm:mb-8
+          tracking-tight
+          border-l-4
+          border-yellow-400
+          pl-4
+        "
+      >
+        <Utensils className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-blue-500" />
+        Quick Filter by Primary Ingredient
+      </h2>
+
+      {/* Category Grid */}
+      <div
+        className="
+          grid
+          grid-cols-2
+          sm:grid-cols-3
+          md:grid-cols-4
+          lg:grid-cols-5
+          gap-4
+          sm:gap-5
+          md:gap-6
+        "
+      >
+        {featuredCategories.map((cat, index) => (
+          <Link
+            to={`/search/${cat}`}
+            key={index}
+            onClick={() => filterByCategory(cat)}
+            className="
+              flex
+              items-center
+              justify-center
+              bg-gray-800
+              px-4
+              py-3
+              sm:py-4
+              rounded-xl
+              text-sm
+              sm:text-base
+              font-semibold
+              text-gray-100
+              border
+              border-gray-700
+              shadow-md
+              shadow-black/40
+              transition-all
+              duration-300
+              hover:border-blue-500
+              hover:text-blue-400
+              hover:bg-gray-700/60
+              hover:scale-[1.05]
+            "
+          >
+            {cat}
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };
 
