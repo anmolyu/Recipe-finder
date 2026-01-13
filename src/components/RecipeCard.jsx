@@ -7,12 +7,12 @@ const RecipeCard = ({ meal }) => {
       <div
         className="
           relative
-          w-full              /* 🔒 card width fixed */
+          w-full
           bg-gray-900
           rounded-2xl
           border border-gray-800
           shadow-xl shadow-black/50
-          transition-shadow duration-300
+          transition-all duration-300
           hover:shadow-blue-600/50
           cursor-pointer
           group
@@ -30,37 +30,29 @@ const RecipeCard = ({ meal }) => {
           "
         />
 
-        {/* Image Wrapper (controls zoom safely) */}
-        <div className="w-full flex justify-center p-4 overflow-hidden">
+        {/* IMAGE */}
+        <div className="w-full p-4">
           <img
             src={meal?.strMealThumb}
             alt={meal?.strMeal}
             className="
-              block
               w-full
-              max-w-[788px]      /* 📱 mobile big */
-              sm:max-w-[220px]
-              md:max-w-[190px]
-              lg:max-w-[170px]
-              xl:max-w-[150px]
               aspect-square
               object-cover
               rounded-xl
               border border-yellow-400
               transition-transform duration-300
-              group-hover:scale-[1.05]
+              group-hover:scale-105
             "
           />
         </div>
 
-        {/* Title */}
+        {/* TITLE */}
         <div className="px-3 pb-5 text-center">
           <h3
             className="
-              text-base
-              sm:text-sm
-              md:text-sm
-              lg:text-base
+              text-sm
+              sm:text-base
               font-bold
               text-gray-100
               group-hover:text-blue-400
