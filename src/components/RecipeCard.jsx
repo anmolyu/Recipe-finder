@@ -9,8 +9,6 @@ const RecipeCard = ({ meal }) => {
         className="
           relative
           w-full
-          max-w-[260px]
-          mx-auto
           bg-gray-900
           rounded-2xl
           border border-gray-800
@@ -21,21 +19,9 @@ const RecipeCard = ({ meal }) => {
           group
         "
       >
-        {/* Hover Border */}
-        <div
-          className="
-            pointer-events-none
-            absolute inset-0
-            rounded-2xl
-            border-2 border-transparent
-            group-hover:border-blue-500/80
-            transition-all duration-300
-          "
-        />
-
         {/* Image Section */}
-        <div className="w-full p-4">
-          <div className="w-full aspect-square overflow-hidden rounded-xl border border-yellow-400">
+        <div className="w-full overflow-hidden rounded-t-2xl">
+          <div className="w-full h-[260px] overflow-hidden border-b border-yellow-400">
             <img
               src={meal?.strMealThumb}
               alt={meal?.strMeal}
@@ -44,20 +30,20 @@ const RecipeCard = ({ meal }) => {
                 h-full
                 object-cover
                 transition-transform
-                duration-300
-                ease-in-out
-                group-hover:scale-110
+                duration-500
+                ease-out
+                group-hover:scale-125
               "
             />
           </div>
         </div>
 
         {/* Title */}
-        <div className="px-4 pb-5 text-center">
+        <div className="px-4 py-4 text-center">
           <h3
             className="
-              text-base
-              font-bold
+              text-lg
+              font-semibold
               text-gray-100
               group-hover:text-blue-400
               transition-colors duration-300
