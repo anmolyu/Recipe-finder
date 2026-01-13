@@ -32,26 +32,29 @@ const RecipeCard = ({ meal }) => {
         />
 
         {/* Image Wrapper (controls zoom safely) */}
-        <div className="w-full flex justify-center p-4 overflow-hidden">
-          <img
-            src={meal?.strMealThumb}
-            alt={meal?.strMeal}
+        <div className="w-full flex justify-center p-4">
+          <div
             className="
-              block
-              w-full
-              max-w-[888px]      /* 📱 mobile big */
-              sm:max-w-[720px]
-              md:max-w-[490px]
-              lg:max-w-[470px]
-              xl:max-w-[250px]
-              aspect-square
-              object-cover
-              rounded-xl
-              border border-yellow-400
-              transition-transform duration-300
-              group-hover:scale-[1.05]
-            "
-          />
+      w-[220px]      /* 🔒 FIXED WIDTH */
+      h-[220px]      /* 🔒 FIXED HEIGHT */
+      overflow-hidden
+      rounded-xl
+      border border-yellow-400
+    "
+          >
+            <img
+              src={meal?.strMealThumb}
+              alt={meal?.strMeal}
+              className="
+        w-full
+        h-full
+        object-cover
+        transition-transform
+        duration-300
+        group-hover:scale-105
+      "
+            />
+          </div>
         </div>
 
         {/* Title */}
