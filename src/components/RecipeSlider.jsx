@@ -37,16 +37,7 @@ const RecipeSlider = ({ title, fetchUrl }) => {
           {title}
         </h2>
 
-        <div
-          className="
-         w-full            /* 📱 mobile */
-           sm:w-[260%]
-          md:w-[140%]
-           lg:w-[120%]       /* 🖥 desktop */
-             mx-auto
-               p-2
-"
-        >
+        <div style={{ width: "150%", margin: "auto", padding: "10px" }}>
           <Slider {...settings}>
             {meals.map((meal) => (
               <div key={meal.idMeal} className="px-10 flex justify-center">
