@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 
 const RecipeCard = ({ meal }) => {
   return (
-    <Link to={`/recipe/${meal.idMeal}`} className="block">
+    <Link to={`/recipe/${meal.idMeal}`} className="block w-full">
+      {/* Card */}
       <div
         className="
           relative
+          w-full
+          max-w-[260px]
+          mx-auto
           bg-gray-900
           rounded-2xl
           border border-gray-800
-          overflow-hidden
           shadow-xl shadow-black/50
           transition-all duration-300
           hover:shadow-blue-600/50
@@ -21,6 +24,7 @@ const RecipeCard = ({ meal }) => {
         {/* Hover Border */}
         <div
           className="
+            pointer-events-none
             absolute inset-0
             rounded-2xl
             border-2 border-transparent
@@ -30,34 +34,29 @@ const RecipeCard = ({ meal }) => {
         />
 
         {/* Image Section */}
-        <div className="flex justify-center items-center p-4 sm:p-3 md:p-3">
-          <img
-            src={meal?.strMealThumb}
-            alt={meal?.strMeal}
-            className="
-              w-full
-              max-w-[220px]      /* 📱 mobile → BIG image */
-              sm:max-w-[180px]   /* tablet */
-              md:max-w-[170px]   /* laptop */
-              lg:max-w-[160px]   /* desktop */
-              aspect-square
-              object-cover
-              rounded-xl
-              border border-yellow-400
-              transition-transform duration-300
-              group-hover:scale-105
-            "
-          />
+        <div className="w-full p-4">
+          <div className="w-full aspect-square overflow-hidden rounded-xl border border-yellow-400">
+            <img
+              src={meal?.strMealThumb}
+              alt={meal?.strMeal}
+              className="
+                w-full
+                h-full
+                object-cover
+                transition-transform
+                duration-300
+                ease-in-out
+                group-hover:scale-110
+              "
+            />
+          </div>
         </div>
 
         {/* Title */}
-        <div className="px-3 pb-5 text-center">
+        <div className="px-4 pb-5 text-center">
           <h3
             className="
-              text-base        /* 📱 mobile → big text */
-              sm:text-sm
-              md:text-sm
-              lg:text-base
+              text-base
               font-bold
               text-gray-100
               group-hover:text-blue-400
