@@ -40,7 +40,7 @@ const RecipeSlider = ({ title, fetchUrl }) => {
         <div
           className="
          w-full            /* 📱 mobile */
-           sm:w-[188%]
+           sm:w-[260%]
           md:w-[140%]
            lg:w-[120%]       /* 🖥 desktop */
              mx-auto
