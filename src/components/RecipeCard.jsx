@@ -3,26 +3,17 @@ import { Link } from "react-router-dom";
 
 const RecipeCard = ({ meal }) => {
   return (
-    <Link
-      to={`/recipe/${meal?.idMeal}`}
-      className="
-        block
-        w-full
-        sm:w-[260px]
-        md:w-[280px]
-        lg:w-[300px]
-        mx-auto
-      "
-    >
+    <Link to={`/recipe/${meal.idMeal}`} className="block w-full">
       <div
         className="
           relative
-          min-w-[240px]
+
+          w-full              /* 🔒 card width fixed */
           bg-gray-900
           rounded-2xl
           border border-gray-800
           shadow-xl shadow-black/50
-          transition-all duration-300
+          transition-shadow duration-300
           hover:shadow-blue-600/50
           cursor-pointer
           group
@@ -40,43 +31,40 @@ const RecipeCard = ({ meal }) => {
           "
         />
 
-        {/* Image */}
+        {/* Image Wrapper (controls zoom safely) */}
         <div className="w-full flex justify-center p-4">
           <div
             className="
-              w-[180px]
-              h-[180px]
-              sm:w-[200px]
-              sm:h-[200px]
-              md:w-[220px]
-              md:h-[220px]
-              overflow-hidden
-              rounded-xl
-              border border-yellow-400
-            "
+      w-[220px]      /* 🔒 FIXED WIDTH */
+      h-[220px]      /* 🔒 FIXED HEIGHT */
+      overflow-hidden
+      rounded-xl
+      border border-yellow-400
+    "
           >
             <img
               src={meal?.strMealThumb}
               alt={meal?.strMeal}
               className="
-                w-full
-                h-full
-                object-cover
-                transition-transform
-                duration-300
-                group-hover:scale-105
-              "
+        w-full
+        h-full
+        object-cover
+        transition-transform
+        duration-300
+        group-hover:scale-105
+      "
             />
           </div>
         </div>
 
         {/* Title */}
-        <div className="px-4 pb-5 text-center">
+        <div className="px-3 pb-5 text-center">
           <h3
             className="
-              text-sm
+              text-base
               sm:text-sm
-              md:text-base
+              md:text-sm
+              lg:text-base
               font-bold
               text-gray-100
               group-hover:text-blue-400
