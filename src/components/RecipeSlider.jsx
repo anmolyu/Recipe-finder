@@ -7,8 +7,7 @@ import RecipeCard from "./RecipeCard";
 import { Clock, Loader } from "lucide-react";
 
 const RecipeSlider = ({ title, fetchUrl }) => {
-  const { data, loading, error } = useFetch(fetchUrl);
-  console.log("my meal data = ", data?.meals);
+  const { data, loading } = useFetch(fetchUrl);
   const meals = data?.meals || [];
 
   const settings = {
@@ -18,36 +17,54 @@ const RecipeSlider = ({ title, fetchUrl }) => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
+    autoplaySpeed: 2500,
+    cssEase: "ease-in-out",
+
+    // 🔥 MOBILE FIX
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
-  if (loading)
+  if (loading) {
     return (
       <div className="text-center p-8 text-gray-300">
         <Loader className="animate-spin inline-block mr-2 text-blue-400" />
         Loading {title}...
       </div>
     );
-  return (
-    <>
-      <section className="mt-2 mx-auto">
-        <h2 className="text-3xl font-extrabold text-gray-100 mb-6 tracking-tight border-1-4 border-yellow-400 pl-4 flex items-center">
-          <Clock className="w-6 h-6 mr-3 text-blue-500" />
-          {title}
-        </h2>
+  }
 
-        <div style={{ width: "90%", margin: "auto", padding: "10px" }}>
-          <Slider {...settings}>
-            {meals.map((meal) => (
-              <div key={meal.idMeal} className="px-10 flex justify-center">
-                <RecipeCard meal={meal} />
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
-    </>
+  return (
+    <section className="mt-4">
+      {/* Title */}
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 mb-4 flex items-center">
+        <Clock className="w-6 h-6 mr-3 text-blue-500" />
+        {title}
+      </h2>
+
+      {/* Slider Wrapper */}
+      <div className="px-2 sm:px-6">
+        <Slider {...settings}>
+          {meals.map((meal) => (
+            <div key={meal.idMeal} className="px-2 sm:px-4">
+              <RecipeCard meal={meal} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </section>
   );
 };
 
