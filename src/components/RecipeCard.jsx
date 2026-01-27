@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 
 const RecipeCard = ({ meal }) => {
   return (
-    <Link to={`/recipe/${meal.idMeal}`} className="block w-full">
+    <Link to={`/recipe/${meal?.idMeal}`} className="block w-full">
       <div
         className="
           relative
-
-          w-full              /* 🔒 card width fixed */
+          w-full
+          max-w-[280px]
+          mx-auto
           bg-gray-900
           rounded-2xl
           border border-gray-800
           shadow-xl shadow-black/50
-          transition-shadow duration-300
+          transition-all duration-300
           hover:shadow-blue-600/50
           cursor-pointer
           group
@@ -31,28 +32,29 @@ const RecipeCard = ({ meal }) => {
           "
         />
 
-        {/* Image Wrapper (controls zoom safely) */}
+        {/* Image Wrapper */}
         <div className="w-full flex justify-center p-4">
           <div
             className="
-      w-[220px]      /* 🔒 FIXED WIDTH */
-      h-[220px]      /* 🔒 FIXED HEIGHT */
-      overflow-hidden
-      rounded-xl
-      border border-yellow-400
-    "
+              w-full
+              max-w-[220px]
+              aspect-square
+              overflow-hidden
+              rounded-xl
+              border border-yellow-400
+            "
           >
             <img
               src={meal?.strMealThumb}
               alt={meal?.strMeal}
               className="
-        w-full
-        h-full
-        object-cover
-        transition-transform
-        duration-300
-        group-hover:scale-105
-      "
+                w-full
+                h-full
+                object-cover
+                transition-transform
+                duration-300
+                group-hover:scale-105
+              "
             />
           </div>
         </div>
@@ -61,7 +63,7 @@ const RecipeCard = ({ meal }) => {
         <div className="px-3 pb-5 text-center">
           <h3
             className="
-              text-base
+              text-sm
               sm:text-sm
               md:text-sm
               lg:text-base
