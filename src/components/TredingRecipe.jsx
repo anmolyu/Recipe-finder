@@ -13,18 +13,18 @@ const TrendingSlider = ({ title, fetchUrl }) => {
     arrows: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
+    autoplaySpeed: 2500,
+    cssEase: "ease-in-out",
 
+    // 🔥 MOBILE FIRST
+    slidesToShow: 5,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 5 } },
-      { breakpoint: 1024, settings: { slidesToShow: 4 } },
-      { breakpoint: 768, settings: { slidesToShow: 3 } },
-      { breakpoint: 640, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
+      { breakpoint: 1280, settings: { slidesToShow: 4 } },
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
     ],
   };
 
@@ -39,20 +39,21 @@ const TrendingSlider = ({ title, fetchUrl }) => {
 
   return (
     <section className="mt-6 px-2 sm:px-4">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-100 mb-6 tracking-tight flex items-center border-l-4 border-yellow-400 pl-4">
+      {/* Title */}
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-100 mb-4 flex items-center border-l-4 border-yellow-400 pl-4">
         <Clock className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-blue-500" />
         {title}
       </h2>
 
       <Slider {...settings}>
         {meals.map((meal) => (
-          <div key={meal.idMeal} className="px-2 flex justify-center">
-            <Link to={`/recipe/${meal.idMeal}`} className="w-full">
+          <div key={meal.idMeal} className="px-1 sm:px-3">
+            <Link to={`/recipe/${meal.idMeal}`} className="block">
               <div
                 className="
-                  w-full
-                  max-w-[260px]
                   mx-auto
+                  w-full
+                  max-w-[320px] sm:max-w-[260px]
                   bg-gray-900
                   rounded-2xl
                   border border-gray-800
@@ -63,12 +64,11 @@ const TrendingSlider = ({ title, fetchUrl }) => {
                 "
               >
                 {/* Image */}
-                <div className="p-4 flex justify-center">
+                <div className="p-3 sm:p-4 flex justify-center">
                   <div
                     className="
                       w-full
                       aspect-square
-                      max-w-[200px]
                       overflow-hidden
                       rounded-xl
                       border border-yellow-400
